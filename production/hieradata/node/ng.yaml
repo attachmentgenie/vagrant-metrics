@@ -1,0 +1,53 @@
+---
+profiles::apache::vhosts:
+   ng.metrics.vagrant:
+     port: 80
+     proxy_dest: 'http://127.0.0.1:8081'
+profiles::carbon::relay_type: carbon-relay-ng
+profiles::carbon_relay::relay_type: carbon-relay-ng
+profiles::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+profiles::nginx::upstreams:
+  graphite:
+    ensure: 'present'
+    upstream_cfg_prepend:
+      ip_hash: ''
+      server: '127.0.0.1:3333'
+profiles::nginx::vhosts:
+  ng.metrics.vagrant:
+    use_default_location: false
+    listen_port: 80
+    locations:
+      '/content/':
+        location_alias: '/usr/share/graphite/webapp/content/'
+      '/':
+        uwsgi: 'graphite'
+  ng.metrics.vagrant:
+    listen_port: 8081
+    proxy: 'http://127.0.0.1:8081'
+profiles::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+profiles::postgresql::manage_repo: true
+profiles::repositories::repositories:
+  'raintank_raintank':
+    name: raintank_raintank
+    baseurl: 'https://packagecloud.io/raintank/raintank/el/6/$basearch'
+    gpgcheck: 0
+    gpgkey: 'https://packagecloud.io/raintank/raintank/gpgkey'
+    sslverify: 1
+    sslcacert: '/etc/pki/tls/certs/ca-bundle.crt'
+stacks::bootstrap::repos: true
+stacks::cache::memcached: true
+stacks::database::postgresql: true
+stacks::metrics::carbon: true
+stacks::metrics::graphite_web: true
+stacks::monitoring::carbon_relay: true
+stacks::monitoring::statsd: true
+stacks::runtime::nodejs: true
+stacks::website::nginx: true

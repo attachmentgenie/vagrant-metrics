@@ -1,0 +1,54 @@
+---
+nodes:
+    - name: node1
+      hostname: node1.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.41
+      ports:
+        - guest: 22
+          host: 4441
+    - name: grafana
+      hostname: grafana.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.42
+      ports:
+        - guest: 22
+          host: 4442
+    - name: influxdb
+      hostname: influxdb.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.43
+      ports:
+        - guest: 22
+          host: 4443
+    - name: whisper
+      hostname: whisper.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.44
+      ports:
+        - guest: 22
+          host: 4444
+    - name: booking
+      hostname: booking.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.45
+      ports:
+        - guest: 22
+          host: 4445
+    - name: ng
+      hostname: ng.metrics.vagrant
+      box: bento/centos-7.3
+      ip: 192.168.44.46
+      ports:
+        - guest: 22
+          host: 4446
+    - name: prometheus
+      hostname: prometheus.metrics.vagrant
+      aliases: "mailhog.metrics.vagrant"
+      box: bento/centos-7.3
+      memory: 1024
+      ip: 192.168.44.47
+      ports:
+        - guest: 22
+          host: 4447
+virtualbox_group: '/Vagrant/metrics'

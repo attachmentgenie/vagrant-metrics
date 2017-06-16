@@ -1,0 +1,72 @@
+---
+classes:
+ - roles::metrics
+profiles::carbon::carbon_caches:
+  a:
+    line_receiver_port: 2103
+    cache_query_port: 7102
+    pickle_receiver_port: 2104
+  b:
+    line_receiver_port: 2203
+    cache_query_port: 7202
+    pickle_receiver_port: 2204
+  c:
+    line_receiver_port: 2303
+    cache_query_port: 7302
+    pickle_receiver_port: 2304
+profiles::collectd::manage_repo: true
+profiles::collectd::plugins:
+  'collectd::plugin::cpu':
+     reportbystate: true
+     reportbycpu: true
+     valuespercentage: true
+  'collectd::plugin::disk':
+    disks:
+      - 'sda'
+    manage_package: false
+  'collectd::plugin::memory': {}
+  'collectd::plugin::tcpconns':
+    listening: true
+  'collectd::plugin::uptime': {}
+  'collectd::plugin::write_graphite':
+    carbons:
+     'localhost':
+        graphitehost: 'localhost'
+    carbon_defaults:
+      graphiteport: 2003
+      graphiteprefix: ''
+      protocol: tcp
+profiles::firewall::ensure: stopped
+profiles::graphite_web::carbon_caches:
+  a:
+    line_receiver_port: 2103
+    cache_query_port: 7102
+    pickle_receiver_port: 2104
+  b:
+    line_receiver_port: 2203
+    cache_query_port: 7202
+    pickle_receiver_port: 2204
+  c:
+    line_receiver_port: 2303
+    cache_query_port: 7302
+    pickle_receiver_port: 2304
+profiles::postgresql::manage_repo: true
+profiles::statsd::install_method: 'npm'
+profiles::uwsgi::apps:
+  graphite:
+    ensure: 'present'
+    gid: 'graphite-web'
+    uid: 'graphite-web'
+    application_options:
+      plugins-dir: '/usr/lib64/uwsgi'
+      processes: 2
+      plugin: 'python'
+      pymodule-alias: graphite.local_settings=/etc/graphite-web/local_settings.py
+      socket: '127.0.0.1:3333'
+      wsgi-file: '/usr/share/graphite/graphite-web.wsgi'
+profiles::uwsgi::plugins:
+  - 'uwsgi-plugin-python'
+stacks::bootstrap::firewall: true
+stacks::metrics::prometheus: true
+stacks::monitoring::collectd: true
+

@@ -1,0 +1,78 @@
+[submodule "modules/roles"]
+	path = production/modules/roles
+	url = git@github.com:attachmentgenie/attachmentgenie-roles.git
+[submodule "modules/stacks"]
+	path = production/modules/stacks
+	url = git@github.com:attachmentgenie/attachmentgenie-stacks.git
+[submodule "modules/profiles"]
+	path = production/modules/profiles
+	url = git@github.com:attachmentgenie/attachmentgenie-profiles.git
+[submodule "modules/stdlib"]
+	path = production/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "modules/firewall"]
+	path = production/modules/firewall
+	url = https://github.com/puppetlabs/puppetlabs-firewall.git
+[submodule "production/modules/grafana"]
+	path = production/modules/grafana
+	url = https://github.com/voxpupuli/puppet-grafana.git
+[submodule "production/modules/influxdb"]
+	path = production/modules/influxdb
+	url = https://github.com/n1tr0g/golja-influxdb.git
+[submodule "production/modules/concat"]
+	path = production/modules/concat
+	url = https://github.com/puppetlabs/puppetlabs-concat.git
+[submodule "production/modules/collectd"]
+	path = production/modules/collectd
+	url = https://github.com/voxpupuli/puppet-collectd.git
+[submodule "production/modules/yum"]
+	path = production/modules/yum
+	url = https://github.com/voxpupuli/puppet-yum.git
+[submodule "production/modules/epel"]
+	path = production/modules/epel
+	url = https://github.com/stahnma/puppet-module-epel.git
+[submodule "production/modules/carbon"]
+	path = production/modules/carbon
+	url = https://github.com/attachmentgenie/puppet-carbon.git
+[submodule "production/modules/graphite_web"]
+	path = production/modules/graphite_web
+	url = https://github.com/attachmentgenie/puppet-graphite_web.git
+[submodule "production/modules/postgresql"]
+	path = production/modules/postgresql
+	url = https://github.com/puppetlabs/puppetlabs-postgresql.git
+[submodule "production/modules/memcached"]
+	path = production/modules/memcached
+	url = https://github.com/saz/puppet-memcached.git
+[submodule "production/modules/carbon_relay_ng"]
+	path = production/modules/carbon_relay_ng
+	url = https://github.com/attachmentgenie/puppet-carbon_relay_ng.git
+[submodule "production/modules/carbon_c_relay"]
+	path = production/modules/carbon_c_relay
+	url = https://github.com/attachmentgenie/puppet-carbon_c_relay.git
+[submodule "production/modules/statsd"]
+	path = production/modules/statsd
+	url = https://github.com/justindowning/puppet-statsd.git
+[submodule "production/modules/nodejs"]
+	path = production/modules/nodejs
+	url = https://github.com/voxpupuli/puppet-nodejs.git
+[submodule "puppet-uwsgi"]
+	path = production/modules/uwsgi
+	url = https://github.com/rvdh/puppet-uwsgi.git
+[submodule "production/modules/nginx"]
+	path = production/modules/nginx
+	url = https://github.com/voxpupuli/puppet-nginx.git
+[submodule "modules/prometheus"]
+	path = production/modules/prometheus
+	url = git@github.com:voxpupuli/puppet-prometheus.git
+[submodule "modules/staging"]
+	path = production/modules/staging
+	url = git@github.com:voxpupuli/puppet-staging.git
+[submodule "production/modules/mailhog"]
+	path = production/modules/mailhog
+	url = git@github.com:attachmentgenie/attachmentgenie-mailhog.git
+[submodule "production/modules/wget"]
+	path = production/modules/wget
+	url = https://github.com/maestrodev/puppet-wget.git
+[submodule "production/modules/systemd"]
+	path = production/modules/systemd
+	url = https://github.com/camptocamp/puppet-systemd.git

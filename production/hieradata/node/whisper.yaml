@@ -1,0 +1,29 @@
+---
+profiles::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+profiles::nginx::upstreams:
+  graphite:
+    ensure: 'present'
+    upstream_cfg_prepend:
+      ip_hash: ''
+      server: '127.0.0.1:3333'
+profiles::nginx::vhosts:
+  whisper.metrics.vagrant:
+    use_default_location: false
+    listen_port: 80
+    locations:
+      '/content/':
+        location_alias: '/usr/share/graphite/webapp/content/'
+      '/':
+        uwsgi: 'graphite'
+stacks::cache::memcached: true
+stacks::database::postgresql: true
+stacks::metrics::carbon: true
+stacks::metrics::graphite_web: true
+stacks::monitoring::statsd: true
+stacks::runtime::nodejs: true
+stacks::website::nginx: true
+stacks::website::uwsgi: true

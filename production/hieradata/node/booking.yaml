@@ -1,0 +1,55 @@
+---
+profiles::carbon::relay_type: carbon-c-relay
+profiles::carbon_relay::carbon_caches:
+  localhost:
+    channel: carbon_ch
+    hosts:
+    - alias: 'a'
+      host: '%{::fqdn}'
+      port: 2103
+    - alias: 'b'
+      host: '%{::fqdn}'
+      port: 2203
+    - alias: 'c'
+      host: '%{::fqdn}'
+      port: 2303
+profiles::carbon_relay::config_matches:
+  '*':
+    cluster_name: localhost
+    order: zz
+    stop: true
+profiles::carbon_relay::relay_type: carbon-c-relay
+profiles::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+profiles::nginx::upstreams:
+  graphite:
+    ensure: 'present'
+    upstream_cfg_prepend:
+      ip_hash: ''
+      server: '127.0.0.1:3333'
+profiles::nginx::vhosts:
+  booking.graphite.vagrant:
+    use_default_location: false
+    listen_port: 80
+    locations:
+      '/content/':
+        location_alias: '/usr/share/graphite/webapp/content/'
+      '/':
+        uwsgi: 'graphite'
+profiles::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+stacks::cache::memcached: true
+stacks::database::postgresql: true
+stacks::metrics::carbon: true
+stacks::metrics::graphite_web: true
+stacks::monitoring::carbon_relay: true
+stacks::monitoring::statsd: true
+stacks::runtime::nodejs: true
+stacks::website::nginx: true
+stacks::website::uwsgi: true
