@@ -76,3 +76,27 @@
 [submodule "production/modules/systemd"]
 	path = production/modules/systemd
 	url = https://github.com/camptocamp/puppet-systemd.git
+[submodule "production/modules/roles"]
+	path = production/modules/roles
+	url = git@github.com:attachmentgenie/attachmentgenie-roles.git
+[submodule "production/modules/stacks"]
+	path = production/modules/stacks
+	url = git@github.com:attachmentgenie/attachmentgenie-stacks.git
+[submodule "production/modules/profiles"]
+	path = production/modules/profiles
+	url = git@github.com:attachmentgenie/attachmentgenie-profiles.git
+[submodule "production/modules/stdlib"]
+	path = production/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "production/modules/firewall"]
+	path = production/modules/firewall
+	url = https://github.com/puppetlabs/puppetlabs-firewall.git
+[submodule "production/modules/uwsgi"]
+	path = production/modules/uwsgi
+	url = https://github.com/rvdh/puppet-uwsgi.git
+[submodule "production/modules/prometheus"]
+	path = production/modules/prometheus
+	url = git@github.com:voxpupuli/puppet-prometheus.git
+[submodule "production/modules/staging"]
+	path = production/modules/staging
+	url = git@github.com:voxpupuli/puppet-staging.git

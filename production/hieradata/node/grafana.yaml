@@ -20,7 +20,7 @@ profiles::grafana::datasources:
     access_mode: proxy
   prometheus:
     type: prometheus
-    url: 'http://prometheus.metrics.vagrant:9090'
+    url: 'http://prometheus.metrics.vagrant'
     access_mode: proxy
     is_default: true
 profiles::nginx::vhosts:
