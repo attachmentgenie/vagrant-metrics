@@ -5,11 +5,6 @@ profiles::apache::vhosts:
      proxy_dest: 'http://127.0.0.1:8081'
 profiles::carbon::relay_type: carbon-relay-ng
 profiles::carbon_relay::relay_type: carbon-relay-ng
-profiles::postgresql::databases:
-  graphite:
-    user: graphite
-    password: secret
-    grant: all
 profiles::nginx::upstreams:
   graphite:
     ensure: 'present'

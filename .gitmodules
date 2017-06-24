@@ -100,3 +100,6 @@
 [submodule "production/modules/staging"]
 	path = production/modules/staging
 	url = git@github.com:voxpupuli/puppet-staging.git
+[submodule "production/modules/archive"]
+	path = production/modules/archive
+	url = https://github.com/voxpupuli/puppet-archive.git

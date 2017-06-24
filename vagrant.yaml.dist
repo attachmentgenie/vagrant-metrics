@@ -14,29 +14,31 @@ nodes:
       ports:
         - guest: 22
           host: 4442
-    - name: influxdb
-      hostname: influxdb.metrics.vagrant
+    - name: classic
+      hostname: classic.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.43
       ports:
         - guest: 22
           host: 4443
-    - name: whisper
-      hostname: whisper.metrics.vagrant
+      provision_shell: systemctl restart uwsgi
+    - name: c
+      hostname: c.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.44
       ports:
         - guest: 22
           host: 4444
-    - name: booking
-      hostname: booking.metrics.vagrant
+      provision_shell: systemctl restart uwsgi
+    - name: ng
+      hostname: ng.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.45
       ports:
         - guest: 22
           host: 4445
-    - name: ng
-      hostname: ng.metrics.vagrant
+    - name: influxdb
+      hostname: influxdb.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.46
       ports:

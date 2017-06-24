@@ -1,31 +1,7 @@
 ---
 profiles::grafana::manage_repo: true
-profiles::grafana::datasources:
-  influxdb:
-    type: influxdb
-    url: 'http://influxdb.metrics.vagrant:8086'
-    access_mode: proxy
-    database: graphite
-  whisper:
-    type: graphite
-    url: 'http://whisper.metrics.vagrant'
-    access_mode: proxy
-  booking:
-    type: graphite
-    url: 'http://booking.metrics.vagrant'
-    access_mode: proxy
-  ng:
-    type: graphite
-    url: 'http://ng.metrics.vagrant'
-    access_mode: proxy
-  prometheus:
-    type: prometheus
-    url: 'http://prometheus.metrics.vagrant'
-    access_mode: proxy
-    is_default: true
 profiles::nginx::vhosts:
   grafana.metrics.vagrant:
     proxy: 'http://127.0.0.1:3000'
 stacks::metrics::grafana: true
-stacks::monitoring::collectd: false
 stacks::website::nginx: true

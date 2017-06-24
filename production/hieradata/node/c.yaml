@@ -19,11 +19,6 @@ profiles::carbon_relay::config_matches:
     order: zz
     stop: true
 profiles::carbon_relay::relay_type: carbon-c-relay
-profiles::postgresql::databases:
-  graphite:
-    user: graphite
-    password: secret
-    grant: all
 profiles::nginx::upstreams:
   graphite:
     ensure: 'present'
@@ -31,7 +26,7 @@ profiles::nginx::upstreams:
       ip_hash: ''
       server: '127.0.0.1:3333'
 profiles::nginx::vhosts:
-  booking.graphite.vagrant:
+  c.metrics.vagrant:
     use_default_location: false
     listen_port: 80
     locations:
