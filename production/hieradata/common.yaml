@@ -36,6 +36,8 @@ profiles::collectd::plugins:
         graphitehost: 'classic.metrics.vagrant'
      'influxdb':
         graphitehost: 'influxdb.metrics.vagrant'
+     'ng':
+        graphitehost: 'ng.metrics.vagrant'
     carbon_defaults:
       graphiteport: 2003
       graphiteprefix: 'collectd.'

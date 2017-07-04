@@ -1,8 +1,4 @@
 ---
-profiles::apache::vhosts:
-   ng.metrics.vagrant:
-     port: 80
-     proxy_dest: 'http://127.0.0.1:8081'
 profiles::carbon::relay_type: carbon-relay-ng
 profiles::carbon_relay::relay_type: carbon-relay-ng
 profiles::nginx::upstreams:
@@ -20,12 +16,6 @@ profiles::nginx::vhosts:
         location_alias: '/usr/share/graphite/webapp/content/'
       '/':
         uwsgi: 'graphite'
-profiles::postgresql::databases:
-  graphite:
-    user: graphite
-    password: secret
-    grant: all
-profiles::postgresql::manage_repo: true
 profiles::repositories::repositories:
   'raintank_raintank':
     name: raintank_raintank
@@ -43,3 +33,4 @@ stacks::monitoring::carbon_relay: true
 stacks::monitoring::statsd: true
 stacks::runtime::nodejs: true
 stacks::website::nginx: true
+stacks::website::uwsgi: true
