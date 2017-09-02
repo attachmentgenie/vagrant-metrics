@@ -22,6 +22,6 @@ profiles::nginx::vhosts:
 profiles::mailhog::install_method: wget
 profiles::mailhog::wget_source: 'https://github.com/mailhog/MailHog/releases/download/v0.2.1/MailHog_linux_amd64'
 profiles::prometheus::server: true
-stacks::alerting::alertmanager: true
-stacks::mail::mailhog: true
-stacks::website::nginx: true
+profiles::alerting::alertmanager: true
+profiles::mail::mailhog: true
+profiles::website::nginx: true

@@ -3,5 +3,5 @@ profiles::grafana::manage_repo: true
 profiles::nginx::vhosts:
   grafana.metrics.vagrant:
     proxy: 'http://127.0.0.1:3000'
-stacks::metrics::grafana: true
-stacks::website::nginx: true
+profiles::metrics::grafana: true
+profiles::website::nginx: true

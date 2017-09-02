@@ -119,6 +119,6 @@ profiles::uwsgi::apps:
       wsgi-file: '/usr/share/graphite/graphite-web.wsgi'
 profiles::uwsgi::plugins:
   - 'uwsgi-plugin-python'
-stacks::bootstrap::firewall: true
-stacks::metrics::prometheus: true
-stacks::monitoring::collectd: true
+profiles::bootstrap::firewall: true
+profiles::metrics::prometheus: true
+profiles::monitoring::collectd: true
