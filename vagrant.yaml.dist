@@ -13,12 +13,12 @@ nodes:
       box: bento/centos-7.3
       ip: 192.168.44.43
       provision_shell: systemctl restart uwsgi
-    - name: c
+    - name: c-relay
       hostname: c.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.44
       provision_shell: systemctl restart uwsgi
-    - name: ng
+    - name: ng-relay
       hostname: ng.metrics.vagrant
       box: bento/centos-7.3
       ip: 192.168.44.45

@@ -1,13 +1,30 @@
 ---
-profiles::carbon::relay_type: carbon-relay-ng
-profiles::carbon_relay::relay_type: carbon-relay-ng
-profiles::nginx::upstreams:
+profiles::bootstrap::repos: true
+profiles::bootstrap::repositories::repositories:
+  'raintank_raintank':
+    name: raintank_raintank
+    baseurl: 'https://packagecloud.io/raintank/raintank/el/6/$basearch'
+    gpgcheck: 0
+    gpgkey: 'https://packagecloud.io/raintank/raintank/gpgkey'
+    sslverify: 1
+    sslcacert: '/etc/pki/tls/certs/ca-bundle.crt'
+profiles::cache::memcached: true
+profiles::database::postgresql: true
+profiles::metrics::carbon: true
+profiles::metrics::carbon::relay_type: carbon-relay-ng
+profiles::metrics::graphite_web: true
+profiles::monitoring::carbon_relay: true
+profiles::monitoring::carbon_relay::relay_type: carbon-relay-ng
+profiles::monitoring::statsd: true
+profiles::runtime::nodejs: true
+profiles::website::nginx: true
+profiles::website::nginx::upstreams:
   graphite:
     ensure: 'present'
     upstream_cfg_prepend:
       ip_hash: ''
       server: '127.0.0.1:3333'
-profiles::nginx::vhosts:
+profiles::website::nginx::vhosts:
   ng.metrics.vagrant:
     use_default_location: false
     listen_port: 80
@@ -16,21 +33,4 @@ profiles::nginx::vhosts:
         location_alias: '/usr/share/graphite/webapp/content/'
       '/':
         uwsgi: 'graphite'
-profiles::repositories::repositories:
-  'raintank_raintank':
-    name: raintank_raintank
-    baseurl: 'https://packagecloud.io/raintank/raintank/el/6/$basearch'
-    gpgcheck: 0
-    gpgkey: 'https://packagecloud.io/raintank/raintank/gpgkey'
-    sslverify: 1
-    sslcacert: '/etc/pki/tls/certs/ca-bundle.crt'
-profiles::bootstrap::repos: true
-profiles::cache::memcached: true
-profiles::database::postgresql: true
-profiles::metrics::carbon: true
-profiles::metrics::graphite_web: true
-profiles::monitoring::carbon_relay: true
-profiles::monitoring::statsd: true
-profiles::runtime::nodejs: true
-profiles::website::nginx: true
 profiles::website::uwsgi: true

@@ -1,11 +1,18 @@
 ---
-profiles::nginx::upstreams:
+profiles::cache::memcached: true
+profiles::database::postgresql: true
+profiles::metrics::carbon: true
+profiles::metrics::graphite_web: true
+profiles::monitoring::statsd: true
+profiles::runtime::nodejs: true
+profiles::website::nginx: true
+profiles::website::nginx::upstreams:
   graphite:
     ensure: 'present'
     upstream_cfg_prepend:
       ip_hash: ''
       server: '127.0.0.1:3333'
-profiles::nginx::vhosts:
+profiles::website::nginx::vhosts:
   classic.metrics.vagrant:
     use_default_location: false
     listen_port: 80
@@ -14,11 +21,4 @@ profiles::nginx::vhosts:
         location_alias: '/usr/share/graphite/webapp/content/'
       '/':
         uwsgi: 'graphite'
-profiles::cache::memcached: true
-profiles::database::postgresql: true
-profiles::metrics::carbon: true
-profiles::metrics::graphite_web: true
-profiles::monitoring::statsd: true
-profiles::runtime::nodejs: true
-profiles::website::nginx: true
 profiles::website::uwsgi: true

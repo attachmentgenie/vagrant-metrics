@@ -1,7 +1,7 @@
 ---
-profiles::grafana::manage_repo: true
-profiles::nginx::vhosts:
+profiles::metrics::grafana: true
+profiles::metrics::grafana::manage_repo: true
+profiles::website::nginx: true
+profiles::website::nginx::vhosts:
   grafana.metrics.vagrant:
     proxy: 'http://127.0.0.1:3000'
-profiles::metrics::grafana: true
-profiles::website::nginx: true

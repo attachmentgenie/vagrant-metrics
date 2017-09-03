@@ -1,6 +1,16 @@
 ---
-profiles::carbon::relay_type: carbon-c-relay
-profiles::carbon_relay::carbon_caches:
+profiles::cache::memcached: true
+profiles::database::postgresql: true
+profiles::database::postgresql::databases:
+  graphite:
+    user: graphite
+    password: secret
+    grant: all
+profiles::metrics::carbon: true
+profiles::metrics::carbon::relay_type: carbon-c-relay
+profiles::metrics::graphite_web: true
+profiles::monitoring::carbon_relay: true
+profiles::monitoring::carbon_relay::carbon_caches:
   localhost:
     channel: carbon_ch
     hosts:
@@ -13,19 +23,22 @@ profiles::carbon_relay::carbon_caches:
     - alias: 'c'
       host: '%{::fqdn}'
       port: 2303
-profiles::carbon_relay::config_matches:
+profiles::monitoring::carbon_relay::config_matches:
   '*':
     cluster_name: localhost
     order: zz
     stop: true
-profiles::carbon_relay::relay_type: carbon-c-relay
-profiles::nginx::upstreams:
+profiles::monitoring::carbon_relay::relay_type: carbon-c-relay
+profiles::monitoring::statsd: true
+profiles::runtime::nodejs: true
+profiles::website::nginx: true
+profiles::website::nginx::upstreams:
   graphite:
     ensure: 'present'
     upstream_cfg_prepend:
       ip_hash: ''
       server: '127.0.0.1:3333'
-profiles::nginx::vhosts:
+profiles::website::nginx::vhosts:
   c.metrics.vagrant:
     use_default_location: false
     listen_port: 80
@@ -34,17 +47,4 @@ profiles::nginx::vhosts:
         location_alias: '/usr/share/graphite/webapp/content/'
       '/':
         uwsgi: 'graphite'
-profiles::postgresql::databases:
-  graphite:
-    user: graphite
-    password: secret
-    grant: all
-profiles::cache::memcached: true
-profiles::database::postgresql: true
-profiles::metrics::carbon: true
-profiles::metrics::graphite_web: true
-profiles::monitoring::carbon_relay: true
-profiles::monitoring::statsd: true
-profiles::runtime::nodejs: true
-profiles::website::nginx: true
 profiles::website::uwsgi: true

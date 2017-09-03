@@ -1,8 +1,8 @@
 ---
-profiles::influxdb::manage_repo: true
-profiles::statsd::backends:
- - statsd-influxdb-backend
 profiles::database::influxdb: true
+profiles::database::influxdb::manage_repo: true
+profiles::metrics::statsd::backends:
+ - statsd-influxdb-backend
 profiles::monitoring::carbon_relay: true
 profiles::monitoring::statsd: true
 profiles::runtime::nodejs: true
