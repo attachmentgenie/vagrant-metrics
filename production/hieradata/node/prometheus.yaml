@@ -12,7 +12,8 @@ profiles::alerting::alertmanager::receivers :
 profiles::mail::mailhog: true
 profiles::mail::mailhog::install_method: wget
 profiles::mail::mailhog::wget_source: 'https://github.com/mailhog/MailHog/releases/download/v0.2.1/MailHog_linux_amd64'
-profiles::metrics::prometheus::server: true
+profiles::monitoring::prometheus: true
+profiles::monitoring::prometheus::server: true
 profiles::website::nginx: true
 profiles::website::nginx::vhosts:
   prometheus.metrics.vagrant:
